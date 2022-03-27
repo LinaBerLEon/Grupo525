@@ -1,0 +1,75 @@
+
+<form [formGroup]="form" (ngSubmit)="save($event)">
+
+    <select type="text" formControlName="Sexo*">
+      <option disabled="">Sexo*</option>
+      <option value="Masculio">Masculino</option>
+      <option value="Femenino">Femenino</option>
+    </select>
+
+  <p>
+    Fecha de nacimiento* <br/>
+    <input type="date"   formControlName="date">
+  </p>
+
+  <p>
+    Nombre: <br/>
+    <input type="text" formControlName="nombre">
+  </p>
+
+  <p>
+    Apellidos: <br/>
+    <input type="text" formControlName="apellido">
+  </p>
+
+  <p>
+    Email: <br/>
+    <input type="email" formControlName="email">
+  </p>
+
+
+  <p>
+    Direccion: <br/>
+    <input type="text" formControlName="direction">
+  </p>
+
+
+  <p>
+    Vivienda <br/>
+    <input type="text" formControlName="vivienda">
+  </p>
+
+  <select type="text" formControlName="pais">
+    <option disabled="">Pais</option>
+    <option value="Colombia">Colombia</option>
+    <option value="Argentina">Argentina</option>
+  </select>
+  <br>
+  <select type="text" formControlName="Departamento">
+    <option disabled="">Departamento</option>
+    <option value="Cundinamarca">Cundinamarca</option>
+    <option value="Bogota">Bogota</option>
+  </select>
+  <br>
+  <select type="text" formControlName="Ciudad">
+    <option disabled="">Ciudad</option>
+    <option value="Bogota">Bogota</option>
+    <option value="Medellin">Medellin</option>
+  </select>
+
+  <p>
+    <textarea name="comentarios" id="comentarios" cols="30" rows="10" formControlName="text">Comentarios</textarea>
+    <small>{{ textField.value.length }}/80</small>
+  </p>
+  <div *ngIf="textField.errors && textField.touched">
+    <p *ngIf="textField.hasError('required')">
+      Es un campo requerido
+    </p>
+    <p *ngIf="textField.hasError('maxlength')">
+      Te pasaste, máximo deben haber 80 caracteres.
+    </p>
+  </div>
+
+  <button (click)="doSomething()">Action</button>
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>
