@@ -1,5 +1,27 @@
+<div class="center" >
 
-<form [formGroup]="form" (ngSubmit)="save($event)">
+	<div class="card">
+		<div class="additional">
+			<div class="user-card">
+				<div class="level center">
+					consultar@correo.com<br>
+          Av 16 de julio Nrc 8 Ciudad-Pais<br>
+          (01)3453-654<br>
+          (01)3233-452<br>
+
+				</div>
+
+			</div>
+			<div class="more-info">
+      <!-- TODO: Aquí adicionaremos nuestro formulario -->
+
+
+<div class="form-container">
+
+  <h1>Contanto</h1>
+
+  <form [formGroup]="form" (ngSubmit)="save($event)">
+
 
     <select type="text" formControlName="Sexo*">
       <option disabled="">Sexo*</option>
@@ -12,35 +34,47 @@
     <input type="date"   formControlName="date">
   </p>
 
-  <p>
-    Nombre: <br/>
-    <input type="text" formControlName="nombre">
-  </p>
+    <input
+    class="form-control"
+    type="text"
+    placeholder="Nombre*"
+    formControlName="nombre">
+    <div class="alert-danger ">
+      <div class="container-error-message">
+        Nombre Requerido y debe tener mimimo 3 caracteres.
+      </div>
+    </div>
 
-  <p>
-    Apellidos: <br/>
-    <input type="text" formControlName="apellido">
-  </p>
+  <div>
+    <input type="text"
+    placeholder="Apellidos*"
+    formControlName="apellido">
+  </div>
 
-  <p>
-    Email: <br/>
-    <input type="email" formControlName="email">
-  </p>
-
-
-  <p>
-    Direccion: <br/>
-    <input type="text" formControlName="direction">
-  </p>
+  <div>
+    <input
+    type="email"
+    placeholder="Email*"
+    formControlName="email">
+  </div>
 
 
-  <p>
-    Vivienda <br/>
-    <input type="text" formControlName="vivienda">
-  </p>
+  <div>
+    <input type="text"
+    placeholder="Direccion*"
+    formControlName="direction">
+  </div>
 
-  <select type="text" formControlName="pais">
-    <option disabled="">Pais</option>
+
+  <div>
+    <input type="text"
+    placeholder="Apartamenro/casa"
+    formControlName="vivienda">
+  </div>
+
+  <select type="text"
+  placeholder="Pais*"
+  formControlName="pais">
     <option value="Colombia">Colombia</option>
     <option value="Argentina">Argentina</option>
   </select>
@@ -57,7 +91,7 @@
     <option value="Medellin">Medellin</option>
   </select>
 
-  <p>
+  <!-- <p>
     <textarea name="comentarios" id="comentarios" cols="30" rows="10" formControlName="text">Comentarios</textarea>
     <small>{{ textField.value.length }}/80</small>
   </p>
@@ -68,8 +102,16 @@
     <p *ngIf="textField.hasError('maxlength')">
       Te pasaste, máximo deben haber 80 caracteres.
     </p>
-  </div>
+  </div> -->
 
   <button (click)="doSomething()">Action</button>
   <button type="submit" [disabled]="form.invalid">Guardar</button>
-</form>
+  </form>
+</div>
+</div>
+</div>
+<div class="general more-info">
+<!-- TODO: Aquí adicionaremos el resultado de los datos que ingresemos al formulario -->
+</div>
+</div>
+</div>

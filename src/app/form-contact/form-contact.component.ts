@@ -10,32 +10,33 @@ import { debounceTime } from 'rxjs/operators';
 export class FormContactComponent implements OnInit {
 
   form: FormGroup;
+  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(
-    private formBuilder: FormBuilder
-    ) {
+  constructor(private formBuilder: FormBuilder) {
 
-    this.buildForm();
   }
+
+  get nombre() {return this.form.get("nombre");}
+  // get apellido() {return this.form.get("apellido");}
+  // get email() {return this.form.get("email");}
 
   ngOnInit(): void {
-  }
 
-  private buildForm() {
     this.form = this.formBuilder.group({
       sexo: ['', [Validators.required]],
 
       date: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      email:['', [Validators.email]],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
+      email:['', [Validators.email, Validators.minLength(12),
+      Validators.pattern(this.emailPattern) ]],
       direccion: ['', [Validators.required]],
-      vivienda: ['', [Validators.required]],
+      vivienda: ['', [Validators.minLength(4)]],
 
-      pais: ['', [Validators.required]],
+      pais: ['', [Validators.required, ]],
       departamento: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
-      comentarios: ['', [Validators.maxLength(200)]],
+      comentarios: ['', [Validators.required, Validators.minLength(50), Validators.maxLength(200)]],
     });
 
 
